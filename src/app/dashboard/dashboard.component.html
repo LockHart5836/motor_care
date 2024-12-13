@@ -103,28 +103,38 @@
     <div class="container">
         <h2>Quick Actions</h2>
         <div class="actions-grid">
-            <div class="action" onclick="handleAction('Service Booking', '/appointment')">
-                <img src="https://www.svgrepo.com/show/499773/calendar.svg" alt="Calendar Icon" class="action-icon text-blue-600">
-                <span class="action-label">Book Service</span>
-            </div>
-            <div class="action" onclick="handleAction('Chain Service')">
-                <img src="https://www.svgrepo.com/show/204557/chains-chain.svg" alt="Link Icon" class="action-icon text-purple-600">
-                <span class="action-label">Chain Service</span>
-            </div>
-            <div class="action" onclick="handleAction('Oil Change', '/oil-change')">
-                <img src="https://www.svgrepo.com/show/214952/drop.svg" alt="Droplet Icon" class="action-icon text-green-600">
-                <span class="action-label">Oil Change</span>
-            </div>
-            <div class="action" onclick="handleAction('Tire Check')">
-                <img src="https://www.svgrepo.com/show/9428/gauge.svg" alt="Gauge Icon" class="action-icon text-orange-600">
-                <span class="action-label">Tire Check</span>
-            </div>
-            <div class="action" onclick="handleAction('Maintenance')">
-                <img src="https://www.svgrepo.com/show/249165/wrench.svg" alt="Wrench Icon" class="action-icon text-indigo-600">
-                <span class="action-label">Maintenance</span>
-            </div>
+          <!-- Book Service -->
+          <div class="action" (click)="navigateTo('Book Service', '/book-service')">
+            <img src="https://www.svgrepo.com/show/499773/calendar.svg" alt="Calendar Icon" class="action-icon text-blue-600">
+            <span class="action-label">Book Service</span>
+          </div>
+      
+          <!-- Chain Service -->
+          <div class="action" (click)="navigateTo('Chain Service', '/chain-service')">
+            <img src="https://www.svgrepo.com/show/204557/chains-chain.svg" alt="Link Icon" class="action-icon text-purple-600">
+            <span class="action-label">Chain Service</span>
+          </div>
+      
+          <!-- Oil Change -->
+          <div class="action" (click)="navigateTo('Oil Change', '/oil-change')">
+            <img src="https://www.svgrepo.com/show/214952/drop.svg" alt="Droplet Icon" class="action-icon text-green-600">
+            <span class="action-label">Oil Change</span>
+          </div>
+      
+          <!-- Tire Check -->
+          <div class="action" (click)="navigateTo('Tire Check', '/tire-check')">
+            <img src="https://www.svgrepo.com/show/9428/gauge.svg" alt="Gauge Icon" class="action-icon text-orange-600">
+            <span class="action-label">Tire Check</span>
+          </div>
+      
+          <!-- Maintenance -->
+          <div class="action" (click)="navigateTo('Maintenance', '/maintenance')">
+            <img src="https://www.svgrepo.com/show/249165/wrench.svg" alt="Wrench Icon" class="action-icon text-indigo-600">
+            <span class="action-label">Maintenance</span>
+          </div>
         </div>
-    </div>
+      </div>
+      
 
     <script>
         function handleAction(actionName, path) {
