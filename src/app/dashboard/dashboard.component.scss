@@ -1,3 +1,4 @@
+<<<<<<< HEAD
         body {
             margin: 0;
             font-family: Arial, sans-serif;
@@ -70,6 +71,8 @@
             }
         }
 
+=======
+>>>>>>> 795c9ee7de77bad15cbe4f882d98bd098b81bbda
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -114,6 +117,74 @@ body {
     font-size: 14px;
     font-weight: 500;
 }
+<<<<<<< HEAD
+=======
+.user-details .email {
+    font-size: 12px;
+    color: #6b7280;
+}
+.logout-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #6b7280;
+    transition: color 0.2s;
+    font-size: 18px;
+}
+.logout-btn:hover {
+    color: #111827;
+}
+@media (min-width: 768px) {
+    .user-details {
+        display: block;
+    }
+}
+
+body {
+font-family: Arial, sans-serif;
+margin: 0;
+padding: 0;
+background-color: #f9f9f9;
+}
+.card {
+overflow: hidden;
+background-color: white;
+border-radius: 8px;
+transition: box-shadow 0.3s;
+margin: 20px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.card:hover {
+box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+.card-content {
+padding: 24px;
+}
+.header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+.header h3 {
+font-size: 24px;
+font-weight: bold;
+background: linear-gradient(to right, #ba3aed, #923bf6);
+background-clip: text;
+color: transparent;
+}
+.header p {
+color: #737373;
+font-size: 14px;
+}
+.status {
+padding: 4px 12px;
+background-color: #dcfce7;
+color: #15803d;
+border-radius: 12px;
+font-size: 14px;
+font-weight: 500;
+}
+>>>>>>> 795c9ee7de77bad15cbe4f882d98bd098b81bbda
 .stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
