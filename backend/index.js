@@ -47,12 +47,11 @@ app.post('/users', async (req, res) => {
 // Define a route for user login
 app.post('/login', async (req, res) => {
   const { email, password } = req.body;
-
   try {
     const user = await prisma.user.findUnique({ where: { email } });
 
-    if (!user || user.password !== password) { // Simplified password check; ideally use bcrypt
-      return res.status(401).json({ error: 'Invalid credentials' });
+    if (!user || user.password !== password) {
+      return res.status(401).json({ message: 'Invalid credentials' });
     }
 
     res.json({ message: 'Login successful', user });
@@ -61,7 +60,6 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ error: 'Error during login' });
   }
 });
-
 
 // Start the server on port 3000
 const PORT = 3000 
