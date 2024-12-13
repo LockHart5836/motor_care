@@ -23,7 +23,11 @@
     </script>
 </body>
 </div>
+<<<<<<< HEAD
 <html lang="en">
+=======
+
+>>>>>>> 8e5d20c25056c92e0632e81ce12e6ac1f3957628
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -90,9 +94,8 @@
         </div>
     </div>
 </body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -144,9 +147,9 @@
         }
     </script>
 </body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
+
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -211,9 +214,8 @@
         }
     </script>
 </body>
-</html>
-<!DOCTYPE html>
-<html lang="en">
+
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -228,3 +230,41 @@
         <div class="event-list" id="eventList"></div>
     </div>
 
+<<<<<<< HEAD
+=======
+    <script>
+        const events = [
+            { date: '2024-12-01', service: 'Oil Change', mileage: 15000, cost: 60 },
+            { date: '2024-11-15', service: 'Tire Rotation', mileage: 14500, cost: 40 },
+            { date: '2024-10-10', service: 'Brake Inspection', mileage: 14000, cost: 80 },
+        ];
+
+        const eventList = document.getElementById('eventList');
+
+        function renderEvents() {
+            eventList.innerHTML = events.map((event, index) => `
+                <div class="event-card">
+                    <div class="event-details">
+                        <p class="event-service">${event.service}</p>
+                        <p class="event-date">${event.date}</p>
+                        <p class="event-mileage">${event.mileage.toLocaleString()} miles</p>
+                    </div>
+                    <div>
+                        <p class="event-cost">$${event.cost}</p>
+                        <button class="delete-btn" onclick="deleteEvent(${index})">&times;</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function deleteEvent(index) {
+            events.splice(index, 1);
+            renderEvents();
+            alert('Event deleted successfully!');
+        }
+
+        renderEvents();
+    </script>
+</body>
+
+>>>>>>> 8e5d20c25056c92e0632e81ce12e6ac1f3957628
