@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,21 +11,16 @@ export class LoginComponent {
   password: string = '';
   errorMessage: string = '';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private router: Router) {}
 
   onLogin(): void {
-    this.http.post('http://localhost:3000/login', {
-      email: this.username,
-      password: this.password,
-    }).subscribe({
-      next: (response: any) => {
-        console.log('Login successful:', response);
-        this.router.navigate(['/dashboard']); // Navigate to the dashboard on success
-      },
-      error: (err) => {
-        this.errorMessage = 'Invalid username or password';
-        console.error('Login failed:', err);
-      },
-    });
+    // Simulated login check (replace with actual backend API logic)
+    if (this.username === 'jake@gmail.com' && this.password === '123') {
+      console.log('Login successful');
+      this.router.navigate(['/dashboard']); // Navigate to the dashboard
+    } else {
+      this.errorMessage = 'Invalid username or password';
+      console.error('Login failed');
+    }
   }
 }
