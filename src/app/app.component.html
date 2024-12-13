@@ -1,1 +1,633 @@
+<<<<<<< HEAD
 <router-outlet></router-outlet>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navbar</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        nav {
+            background-color: white;
+            border-bottom: 1px solid #e5e7eb;
+            padding: 0 16px;
+        }
+        .nav-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(to right, #c32bff, #9c3bf6);
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .avatar {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e5e7eb;
+            border-radius: 50%;
+            font-size: 20px;
+            font-weight: bold;
+            color: #6b7280;
+        }
+        .user-details {
+            display: none;
+        }
+        .user-details p {
+            margin: 0;
+        }
+        .user-details .name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .user-details .email {
+            font-size: 12px;
+            color: #6b7280;
+        }
+        .logout-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #6b7280;
+            transition: color 0.2s;
+            font-size: 18px;
+        }
+        .logout-btn:hover {
+            color: #111827;
+        }
+        @media (min-width: 768px) {
+            .user-details {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Motor Care</div>
+            <div class="user-info">
+                <div class="user-details">
+                </div>
+                <button class="logout-btn" onclick="navigateToLogin()">&#x2192;</button>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function navigateToLogin() {
+            window.location.href = '/login';
+        }
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .card {
+            overflow: hidden;
+            background-color: white;
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+            margin: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card:hover {
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+        .card-content {
+            padding: 24px;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .header h3 {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(to right, #ba3aed, #923bf6);
+            background-clip: text;
+            color: transparent;
+        }
+        .header p {
+            color: #737373;
+            font-size: 14px;
+        }
+        .status {
+            padding: 4px 12px;
+            background-color: #dcfce7;
+            color: #15803d;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            padding: 16px;
+            background: linear-gradient(to bottom right, #f8f8f8, #eaeaea);
+            border-radius: 8px;
+        }
+        .stat {
+            text-align: left;
+        }
+        .stat p {
+            margin: 4px 0;
+        }
+        .stat .value {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .motor-specs {
+            margin-top: 24px;
+        }
+        .motor-specs h4 {
+            font-size: 18px;
+            font-weight: 600;
+        }
+        .motor-specs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        .spec {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            background-color: #f8f8f8;
+            border-radius: 8px;
+        }
+        .spec-icon {
+            width: 20px;
+            height: 20px;
+        }
+        .spec-details p {
+            margin: 0;
+        }
+        .spec-details .value {
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="card-content">
+            <div class="header">
+                <div>
+                    <h3>2023 Ducati Panigale V4</h3>
+                    <p>Premium Performance Vehicle</p>
+                </div>
+                <span class="status">Active</span>
+            </div>
+
+            <div class="stats">
+                <div class="stat">
+                    <p>Current Mileage</p>
+                    <p class="value">20,000 mi</p>
+                </div>
+                <div class="stat">
+                    <p>Last Service</p>
+                    <p class="value">12/01/2024</p>
+                </div>
+            </div>
+
+            <div class="motor-specs">
+                <h4>Motor Specifications</h4>
+                <div class="motor-specs-grid">
+                    <div class="spec">
+                        <img src="https://www.svgrepo.com/show/508002/cog.svg" alt="Cog Icon" class="spec-icon">
+                        <div class="spec-details">
+                            <p>Motor Type</p>
+                            <p class="value">V6</p>
+                        </div>
+                    </div>
+                    <div class="spec">
+                        <img src="https://www.svgrepo.com/show/395743/power-energy-battery-empty.svg" alt="Power Icon" class="spec-icon">
+                        <div class="spec-details">
+                            <p>Power Output</p>
+                            <p class="value">400 HP</p>
+                        </div>
+                    </div>
+                    <div class="spec">
+                        <img src="https://www.svgrepo.com/show/244242/gauge.svg" alt="Gauge Icon" class="spec-icon">
+                        <div class="spec-details">
+                            <p>Torque</p>
+                            <p class="value">450 Nm</p>
+                        </div>
+                    </div>
+                    <div class="spec">
+                        <img src="https://www.svgrepo.com/show/178374/ruler-construction.svg" alt="Ruler Icon" class="spec-icon">
+                        <div class="spec-details">
+                            <p>Displacement</p>
+                            <p class="value">3.0L</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Actions</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            padding: 24px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        .container h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1f2937;
+        }
+        .actions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 16px;
+        }
+        .action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            border: 2px solid #e5e7eb;
+            border-radius: 8px;
+            background-color: white;
+            transition: transform 0.2s, background-color 0.2s;
+            cursor: pointer;
+        }
+        .action:hover {
+            background-color: #f9fafb;
+            transform: translateY(-4px);
+        }
+        .action:active {
+            transform: scale(0.95);
+        }
+        .action-icon {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 8px;
+        }
+        .action-label {
+            font-size: 14px;
+            font-weight: 500;
+            color: #374151;
+            text-align: center;
+        }
+        .text-blue-600 { color: #2563eb; }
+        .text-purple-600 { color: #7c3aed; }
+        .text-green-600 { color: #16a34a; }
+        .text-orange-600 { color: #ea580c; }
+        .text-indigo-600 { color: #4f46e5; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Quick Actions</h2>
+        <div class="actions-grid">
+            <div class="action" onclick="handleAction('Service Booking', '/appointment')">
+                <img src="https://www.svgrepo.com/show/499773/calendar.svg" alt="Calendar Icon" class="action-icon text-blue-600">
+                <span class="action-label">Book Service</span>
+            </div>
+            <div class="action" onclick="handleAction('Chain Service')">
+                <img src="https://www.svgrepo.com/show/204557/chains-chain.svg" alt="Link Icon" class="action-icon text-purple-600">
+                <span class="action-label">Chain Service</span>
+            </div>
+            <div class="action" onclick="handleAction('Oil Change', '/oil-change')">
+                <img src="https://www.svgrepo.com/show/214952/drop.svg" alt="Droplet Icon" class="action-icon text-green-600">
+                <span class="action-label">Oil Change</span>
+            </div>
+            <div class="action" onclick="handleAction('Tire Check')">
+                <img src="https://www.svgrepo.com/show/9428/gauge.svg" alt="Gauge Icon" class="action-icon text-orange-600">
+                <span class="action-label">Tire Check</span>
+            </div>
+            <div class="action" onclick="handleAction('Maintenance')">
+                <img src="https://www.svgrepo.com/show/249165/wrench.svg" alt="Wrench Icon" class="action-icon text-indigo-600">
+                <span class="action-label">Maintenance</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function handleAction(actionName, path) {
+            const userType = localStorage.getItem('userType');
+            if (userType !== 'company') {
+                alert("This action requires company registration. Please contact support for registration.");
+                return;
+            }
+
+            if (path) {
+                window.location.href = path;
+            } else {
+                alert(`${actionName} Request\nYour request has been registered. We'll contact you shortly.`);
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            padding: 24px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        .container h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1f2937;
+        }
+        .note-input {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+        }
+        .note-input textarea {
+            width: 100%;
+            min-height: 100px;
+            padding: 12px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            resize: none;
+        }
+        .note-input button {
+            margin-top: 8px;
+            padding: 10px;
+            background-color: #2563eb;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .note-input button:disabled {
+            background-color: #93c5fd;
+            cursor: not-allowed;
+        }
+        .notes-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .note-card {
+            padding: 16px;
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            position: relative;
+        }
+        .note-card .delete-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 14px;
+        }
+        .note-card p {
+            margin: 4px 0;
+        }
+        .note-card .note-date {
+            color: #6b7280;
+            font-size: 12px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Notes</h2>
+        <div class="note-input">
+            <textarea id="newNote" placeholder="Add a new note..."></textarea>
+            <button id="addNoteBtn" disabled>Add Note</button>
+        </div>
+        <div class="notes-list" id="notesList"></div>
+    </div>
+
+    <script>
+        const notes = [];
+
+        const newNoteInput = document.getElementById('newNote');
+        const addNoteBtn = document.getElementById('addNoteBtn');
+        const notesList = document.getElementById('notesList');
+
+        newNoteInput.addEventListener('input', () => {
+            addNoteBtn.disabled = !newNoteInput.value.trim();
+        });
+
+        addNoteBtn.addEventListener('click', () => {
+            const content = newNoteInput.value.trim();
+            if (content) {
+                const note = {
+                    id: Date.now(),
+                    content,
+                    date: new Date().toLocaleDateString(),
+                };
+                notes.unshift(note);
+                renderNotes();
+                newNoteInput.value = '';
+                addNoteBtn.disabled = true;
+                alert('Note added successfully!');
+            }
+        });
+
+        function renderNotes() {
+            notesList.innerHTML = notes.map(note => `
+                <div class="note-card">
+                    <button class="delete-btn" onclick="deleteNote(${note.id})">&times;</button>
+                    <p class="note-date">${note.date}</p>
+                    <p>${note.content}</p>
+                </div>
+            `).join('');
+        }
+
+        function deleteNote(id) {
+            const noteIndex = notes.findIndex(note => note.id === id);
+            if (noteIndex > -1) {
+                notes.splice(noteIndex, 1);
+                renderNotes();
+                alert('Note deleted successfully!');
+            }
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Timeline</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+        .container {
+            padding: 24px;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+        .container h2 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #1f2937;
+        }
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .event-card {
+            padding: 16px;
+            background-color: #f9fafb;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: box-shadow 0.2s;
+        }
+        .event-card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .event-details {
+            display: flex;
+            flex-direction: column;
+        }
+        .event-details p {
+            margin: 4px 0;
+        }
+        .event-details .event-date,
+        .event-details .event-mileage {
+            color: #6b7280;
+            font-size: 12px;
+        }
+        .event-cost {
+            color: #16a34a;
+            font-weight: 600;
+        }
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            font-size: 14px;
+            transition: color 0.2s;
+        }
+        .delete-btn:hover {
+            color: #dc2626;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Maintenance History</h2>
+        <div class="event-list" id="eventList"></div>
+    </div>
+
+    <script>
+        const events = [
+            { date: '2024-12-01', service: 'Oil Change', mileage: 15000, cost: 60 },
+            { date: '2024-11-15', service: 'Tire Rotation', mileage: 14500, cost: 40 },
+            { date: '2024-10-10', service: 'Brake Inspection', mileage: 14000, cost: 80 },
+        ];
+
+        const eventList = document.getElementById('eventList');
+
+        function renderEvents() {
+            eventList.innerHTML = events.map((event, index) => `
+                <div class="event-card">
+                    <div class="event-details">
+                        <p class="event-service">${event.service}</p>
+                        <p class="event-date">${event.date}</p>
+                        <p class="event-mileage">${event.mileage.toLocaleString()} miles</p>
+                    </div>
+                    <div>
+                        <p class="event-cost">$${event.cost}</p>
+                        <button class="delete-btn" onclick="deleteEvent(${index})">&times;</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function deleteEvent(index) {
+            events.splice(index, 1);
+            renderEvents();
+            alert('Event deleted successfully!');
+        }
+
+        renderEvents();
+    </script>
+</body>
+</html>
+>>>>>>> main
