@@ -10,7 +10,13 @@
   
   
   .text-primary {
-    color: #1d4ed8; /* Example primary text color */
+    color: white; /* Example primary text color */
+  }
+  #password {
+    color: black; /* Example password text color */
+  }
+  #username {
+    color: black;
   }
   
   .text-primary-foreground {
@@ -28,5 +34,12 @@
   input {
     background-color: #ffffff; /* Input background color */
     color: #1d4ed8; /* Input text color */
+  }
+  
+  button svg {
+    transition: all 0.3s ease;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
   }
   
