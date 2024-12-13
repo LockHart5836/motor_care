@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -6,12 +8,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
-  email: string = '';
+  username: string = '';
   password: string = '';
+  errorMessage: string = '';
 
-  constructor() {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   onLogin(): void {
-    console.log('Login attempted with email:', this.email, 'and password:', this.password);
+    this.http.post('http://localhost:3000/login', {
+      email: this.username,
+      password: this.password,
+    }).subscribe({
+      next: (response: any) => {
+        console.log('Login successful:', response);
+        this.router.navigate(['/dashboard']); // Navigate to the dashboard on success
+      },
+      error: (err) => {
+        this.errorMessage = 'Invalid username or password';
+        console.error('Login failed:', err);
+      },
+    });
   }
 }
