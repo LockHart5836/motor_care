@@ -1,0 +1,32 @@
+.full-screen {
+    height: 100vh; /* Full screen height */
+  }
+  
+  .center-flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  
+  .text-primary {
+    color: #1d4ed8; /* Example primary text color */
+  }
+  
+  .text-primary-foreground {
+    color: #ffffff; /* Example primary foreground text color */
+  }
+  
+  .bg-primary {
+    background-color: #1d4ed8; /* Example primary background color */
+  }
+  
+  .dark\:bg-card {
+    background-color: #1e1e1e; /* Dark mode card color */
+  }
+  
+  input {
+    background-color: #ffffff; /* Input background color */
+    color: #1d4ed8; /* Input text color */
+  }
+  
