@@ -3,6 +3,7 @@ const { PrismaClient } = require('@prisma/client'); // Import Prisma client
 const cors = require('cors'); // Import CORS for cross-origin requests
 const app = express(); // Initialize Express
 const prisma = new PrismaClient(); // Initialize Prisma
+const bcrypt = require('bcryptjs');
 
 app.use(cors()); // Enable CORS
 app.use(express.json()); // Enable parsing JSON bodies
@@ -23,9 +24,19 @@ app.post('/users', async (req, res) => {
   const { name, email, password } = req.body;
 
   try {
+    // Hash the password before saving it
+    const hashedPassword = await bcrypt.hash(password, 10);
+
     const user = await prisma.user.create({
-      data: { name, email, password }, // Password should be hashed for security
+      data: {
+        name,
+        email,
+        password: hashedPassword,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
     });
+
     res.json(user);
   } catch (error) {
     console.error('Error creating user:', error);
@@ -51,8 +62,9 @@ app.post('/login', async (req, res) => {
   }
 });
 
+
 // Start the server on port 3000
-const PORT = 3000;
+const PORT = 3000 
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`); 
 });
