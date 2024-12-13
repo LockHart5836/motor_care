@@ -152,81 +152,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Notes</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        .container {
-            padding: 24px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-        }
-        .container h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            color: #1f2937;
-        }
-        .note-input {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 16px;
-        }
-        .note-input textarea {
-            width: 100%;
-            min-height: 100px;
-            padding: 12px;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            resize: none;
-        }
-        .note-input button {
-            margin-top: 8px;
-            padding: 10px;
-            background-color: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .note-input button:disabled {
-            background-color: #93c5fd;
-            cursor: not-allowed;
-        }
-        .notes-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .note-card {
-            padding: 16px;
-            background-color: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            position: relative;
-        }
-        .note-card .delete-btn {
-            position: absolute;
-            top: 8px;
-            right: 8px;
-            background: none;
-            border: none;
-            color: #ef4444;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .note-card p {
-            margin: 4px 0;
-        }
-        .note-card .note-date {
-            color: #6b7280;
-            font-size: 12px;
-        }
     </style>
 </head>
 <body>
@@ -234,7 +159,7 @@
         <h2>Notes</h2>
         <div class="note-input">
             <textarea id="newNote" placeholder="Add a new note..."></textarea>
-            <button id="addNoteBtn" disabled>Add Note</button>
+            <button id="addNoteBtn">Add Note</button>
         </div>
         <div class="notes-list" id="notesList"></div>
     </div>
@@ -294,70 +219,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Maintenance Timeline</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f9f9f9;
-        }
-        .container {
-            padding: 24px;
-            background-color: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            margin: 20px;
-        }
-        .container h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            color: #1f2937;
-        }
-        .event-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-        .event-card {
-            padding: 16px;
-            background-color: #f9fafb;
-            border: 1px solid #e5e7eb;
-            border-radius: 8px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: box-shadow 0.2s;
-        }
-        .event-card:hover {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-        .event-details {
-            display: flex;
-            flex-direction: column;
-        }
-        .event-details p {
-            margin: 4px 0;
-        }
-        .event-details .event-date,
-        .event-details .event-mileage {
-            color: #6b7280;
-            font-size: 12px;
-        }
-        .event-cost {
-            color: #16a34a;
-            font-weight: 600;
-        }
-        .delete-btn {
-            background: none;
-            border: none;
-            color: #ef4444;
-            cursor: pointer;
-            font-size: 14px;
-            transition: color 0.2s;
-        }
-        .delete-btn:hover {
-            color: #dc2626;
-        }
+
     </style>
 </head>
 <body>
