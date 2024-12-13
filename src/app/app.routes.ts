@@ -9,7 +9,7 @@ import { ViewComponent } from './view/view.component';
 
 
 export const routes: Routes = [
-    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: '', redirectTo: 'login', pathMatch: 'full' },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
