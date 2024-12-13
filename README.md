@@ -33,5 +33,5 @@ password: 123
 
 # Running Backend (PRISMA)
 
-Terminal - cd backend |||
-Terminal - node index.js
+Terminal - cd backend --->
+Terminal - node index.js ---> "Server running on http://localhost:3000"
