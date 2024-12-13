@@ -215,16 +215,109 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maintenance Timeline</title>
-    <style>
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Maintenance Timeline</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+    .space-y-4 > * + * {
+      margin-top: 1rem;
+    }
+    .text-xl {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+    .font-semibold {
+      font-weight: 600;
+    }
+    .mb-4 {
+      margin-bottom: 1rem;
+    }
+    .card {
+      padding: 1rem;
+      position: relative;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .flex {
+      display: flex;
+    }
+    .items-start {
+      align-items: flex-start;
+    }
+    .justify-between {
+      justify-content: space-between;
+    }
+    .gap-4 > * + * {
+      margin-left: 1rem;
+    }
+    .font-medium {
+      font-weight: 500;
+    }
+    .text-sm {
+      font-size: 0.875rem;
+    }
+    .text-muted-foreground {
+      color: #6b7280;
+    }
+    .text-green-600 {
+      color: #16a34a;
+    }
+    .text-red-500 {
+      color: #ef4444;
+    }
+    .text-red-500:hover {
+      color: #dc2626;
+    }
+    .hover-bg-red-50:hover {
+      background-color: #fef2f2;
+    }
+    .button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 0.5rem;
+      border-radius: 50%;
+      transition: background-color 0.2s, color 0.2s;
+    }
+    .icon {
+      width: 20px;
+      height: 20px;
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Maintenance History</h2>
-        <div class="event-list" id="eventList"></div>
+  <div class="space-y-4">
+    <h2 class="text-xl font-semibold mb-4">Maintenance History</h2>
+    <div class="space-y-4">
+      <!-- Repeat this block for each event -->
+      <div class="card">
+        <div class="flex items-start justify-between">
+          <div>
+            <p class="font-medium">Oil Change</p>
+            <p class="text-sm text-muted-foreground">2024-12-01</p>
+            <p class="text-sm text-muted-foreground">12,000 miles</p>
+          </div>
+          <div class="flex items-center gap-4">
+            <p class="text-green-600 font-medium">$100</p>
+            <button class="button text-red-500 hover-bg-red-50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6h18M9 6v12m6-12v12m-7 3h8a2 2 0 002-2V6a2 2 0 00-2-2H7a2 2 0 00-2 2v12a2 2 0 002 2z" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- End of block -->
     </div>
-
+  </div>
+</body>
+</html>
