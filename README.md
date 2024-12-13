@@ -33,5 +33,5 @@ password: 123
 
 # Running Backend (PRISMA)
 
-Terminal - cd backend
+Terminal - cd backend |||
 Terminal - node index.js
