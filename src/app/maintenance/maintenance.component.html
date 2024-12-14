@@ -1,1 +1,99 @@
-<p>maintenance works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Set Schedule</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333333;
+        }
+        .checkbox-group {
+            margin: 15px 0;
+        }
+        .checkbox-group label {
+            display: block;
+            margin: 5px 0;
+            font-size: 16px;
+            color: #555;
+        }
+        .form-group {
+            margin: 15px 0;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Set Schedule</h1>
+
+        <div class="checkbox-group">
+            <label><input type="checkbox"> Oil</label>
+            <label><input type="checkbox"> Drive Chain</label>
+            <label><input type="checkbox"> Tires</label>
+            <label><input type="checkbox"> Brakes</label>
+            <label><input type="checkbox"> Air Filter</label>
+            <label><input type="checkbox"> Fuel</label>
+            <label><input type="checkbox"> Battery</label>
+        </div>
+
+        <div class="form-group">
+            <label for="date">Preferred Date</label>
+            <input type="date" id="date">
+        </div>
+
+        <div class="form-group">
+            <label for="time">Preferred Time</label>
+            <input type="time" id="time">
+        </div>
+
+        <div class="form-group">
+            <label for="miles">Miles</label>
+            <input type="number" id="miles" placeholder="Enter miles">
+        </div>
+
+        <button class="btn">Add Schedule</button>
+    </div>
+</body>
+</html>
