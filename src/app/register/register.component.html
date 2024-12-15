@@ -1,54 +1,88 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <style>
-
-    </style>
-</head>
-<body>
-    <div class="card">
-        <div class="card-header">
-            <h2>Register</h2>
-            <p>Create an account to get started</p>
-        </div>
-        <div class="form">
-            <form onsubmit="handleRegister(event)">
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" placeholder="Create a password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword">Confirm Password</label>
-                    <input type="password" id="confirmPassword" placeholder="Confirm your password" required>
-                </div>
-                <button type="submit" class="button">Register</button>
-            </form>
-            <a href="/login" class="link">Already have an account? Login here</a>
-        </div>
+<div class="card">
+    <div class="card-header">
+      <h2>Register</h2>
+      <p>Create an account to get started</p>
     </div>
-
-    <script>
-        function handleRegister(event) {
-            event.preventDefault();
-
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-
-            if (password !== confirmPassword) {
-                alert('Passwords do not match!');
-                return;
-            }
-
-            alert('Registration successful! Please login.');
-            window.location.href = '/login';
-        }
-    </script>
-</body>
-</html>
+    <div class="form">
+      <form (ngSubmit)="onSubmit()" #registerForm="ngForm">
+        
+        <!-- Name Field -->
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input 
+            type="text" 
+            id="name" 
+            [(ngModel)]="name" 
+            name="name" 
+            placeholder="Enter your name" 
+            required 
+            #nameField="ngModel">
+          <div *ngIf="nameField.invalid && nameField.touched" class="error">
+            Name is required.
+          </div>
+        </div>
+        
+        <!-- Email Field with Format Validation -->
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input 
+            type="email" 
+            id="email" 
+            [(ngModel)]="email" 
+            name="email" 
+            placeholder="Enter your email" 
+            required 
+            email
+            #emailField="ngModel">
+          <div *ngIf="emailField.invalid && emailField.touched" class="error">
+            <div *ngIf="emailField.errors?.['required']">Email is required.</div>
+            <div *ngIf="emailField.errors?.['email']">Please enter a valid email address.</div>
+          </div>
+        </div>
+  
+        <!-- Password Field with Length Validation -->
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input 
+            type="password" 
+            id="password" 
+            [(ngModel)]="password" 
+            name="password" 
+            placeholder="Create a password" 
+            required 
+            minlength="7"
+            #passwordField="ngModel">
+          <div *ngIf="passwordField.invalid && passwordField.touched" class="error">
+            <div *ngIf="passwordField.errors?.['required']">Password is required.</div>
+            <div *ngIf="passwordField.errors?.['minlength']">Password must be at least 7 characters long.</div>
+          </div>
+        </div>
+  
+        <!-- Confirm Password Field with Match Validation -->
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input 
+            type="password" 
+            id="confirmPassword" 
+            [(ngModel)]="confirmPassword" 
+            name="confirmPassword" 
+            placeholder="Confirm your password" 
+            required 
+            #confirmPasswordField="ngModel">
+          <div *ngIf="confirmPasswordField.invalid && confirmPasswordField.touched" class="error">
+            Please confirm your password.
+          </div>
+          <div *ngIf="confirmPassword && confirmPassword !== password" class="error">
+            Passwords do not match!
+          </div>
+        </div>
+  
+        <!-- Submit Button -->
+        <button type="submit" class="button" [disabled]="registerForm.invalid || password !== confirmPassword">
+          Register
+        </button>
+      </form>
+      <a href="/login" class="link">Already have an account? Login here</a>
+    </div>
+  </div>
+  
