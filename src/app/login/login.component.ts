@@ -2,11 +2,12 @@ import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { AuthenticationService } from '../services/authentication.service'; 
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -27,7 +28,6 @@ export class LoginComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.usernameInput.nativeElement.focus();
   }
-
   onLogin(): void {
     this.errorMessage = '';
     this.isLoading = true;
