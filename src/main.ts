@@ -1,10 +1,12 @@
 import { bootstrapApplication } from '@angular/platform-browser';
+import { provideHttpClient } from '@angular/common/http';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { AppComponent } from './app/app.component';
-import { HttpClientModule } from '@angular/common/http'; // Import here
+import { routes } from './app/app.routes'; // Import your routes
 
 bootstrapApplication(AppComponent, {
   providers: [
-    HttpClientModule // Add HttpClientModule here for Standalone AppComponent
-  ],
-})
-  .catch((err) => console.error(err));
+    provideHttpClient(),
+    provideRouter(routes, withComponentInputBinding()) // Provide the router configuration
+  ]
+}).catch(err => console.error(err));
