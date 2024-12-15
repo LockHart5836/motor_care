@@ -8,8 +8,8 @@ import { AuthenticationService } from './services/authentication.service';
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
-    HttpClientModule,
     CommonModule,
-    AuthenticationService 
+    AuthenticationService,
+    HttpClientModule,  // Only HttpClientModule should be provided here
   ]
 };

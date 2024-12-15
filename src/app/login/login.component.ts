@@ -1,13 +1,12 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthenticationService } from '../services/authentication.service'; 
-import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from '../services/authentication.service';  // Correct import
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [CommonModule],  // Remove HttpClientModule from here
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -40,12 +39,12 @@ export class LoginComponent implements AfterViewInit {
       (response) => {
         this.isLoading = false;
         console.log('Login successful:', response);
-        
+
         // Store user session after successful login
         this.authService.storeUserSession(response);
 
         // Navigate to the dashboard or any other page after login
-        this.router.navigate(['/dashboard']); 
+        this.router.navigate(['/dashboard']);
       },
       (error) => {
         this.isLoading = false;
@@ -55,7 +54,6 @@ export class LoginComponent implements AfterViewInit {
     );
   }
 
-  // Optional: Check if user is already logged in
   ngOnInit() {
     if (this.authService.isLoggedIn()) {
       this.router.navigate(['/dashboard']);  // Redirect to dashboard if logged in
