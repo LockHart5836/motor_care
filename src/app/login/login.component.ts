@@ -1,11 +1,12 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { AuthenticationService } from '../services/authentication.service'; 
 
 @Component({
   selector: 'app-login',
-  standalone: true, 
-  imports: [CommonModule], 
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -17,36 +18,35 @@ export class LoginComponent implements AfterViewInit {
 
   passwordFieldType: string = 'password';
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthenticationService) {}
 
   togglePasswordVisibility(): void {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
 
-  // Implement AfterViewInit to ensure ViewChild elements are initialized
   ngAfterViewInit(): void {
     this.usernameInput.nativeElement.focus();
   }
 
   onLogin(): void {
-    this.errorMessage = '';  // Clear previous error message
-    this.isLoading = true;  // Show loading state
-    
-    const username = this.usernameInput.nativeElement.value;
+    this.errorMessage = '';
+    this.isLoading = true;
+
+    const email = this.usernameInput.nativeElement.value;
     const password = this.passwordInput.nativeElement.value;
 
-    // Simulated login check (replace with actual backend API logic)
-    setTimeout(() => {
-      // Simulate a short delay for the login process
-      this.isLoading = false;  // Hide loading state
-      
-      if (username === 'jake@gmail.com' && password === '123') {
-        console.log('Login successful');
+    // Call the AuthService login method
+    this.authService.login(email, password).subscribe(
+      (response) => {
+        this.isLoading = false;
+        console.log('Login successful:', response);
         this.router.navigate(['/dashboard']); // Navigate to the dashboard
-      } else {
-        this.errorMessage = 'Invalid username or password. Please try again.';
-        console.error('Login failed');
+      },
+      (error) => {
+        this.isLoading = false;
+        console.error('Login failed:', error);
+        this.errorMessage = error.error.message || 'An error occurred. Please try again.';
       }
-    }, 1000); // Simulate delay (replace with actual API call)
+    );
   }
 }
