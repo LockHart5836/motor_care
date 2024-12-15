@@ -1,18 +1,22 @@
 import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { AuthenticationService } from '../services/authentication.service';  // Correct import
+import { FormsModule } from '@angular/forms';  // Import FormsModule
+import { AuthenticationService } from '../services/authentication.service';  
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule],  // Remove HttpClientModule from here
+  imports: [CommonModule, FormsModule],  // Add FormsModule here
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements AfterViewInit {
   @ViewChild('username') usernameInput!: ElementRef;
   @ViewChild('password') passwordInput!: ElementRef;
+  
+  email: string = '';  
+  password: string = '';  
   errorMessage: string = '';
   isLoading: boolean = false;
   passwordFieldType: string = 'password';
@@ -28,35 +32,23 @@ export class LoginComponent implements AfterViewInit {
   }
 
   onLogin(): void {
-    this.errorMessage = '';
-    this.isLoading = true;
+    this.errorMessage = '';  // Clear any previous error messages
+    this.isLoading = true;    // Show loading state
 
-    const email = this.usernameInput.nativeElement.value;
-    const password = this.passwordInput.nativeElement.value;
-
-    // Call the AuthService login method
-    this.authService.login(email, password).subscribe(
+    this.authService.login(this.email, this.password).subscribe(
       (response) => {
-        this.isLoading = false;
+        this.isLoading = false;  // Hide loading state
         console.log('Login successful:', response);
+        this.authService.storeUserSession(response);  // Store session data
 
-        // Store user session after successful login
-        this.authService.storeUserSession(response);
-
-        // Navigate to the dashboard or any other page after login
+        // Navigate to the dashboard or home page
         this.router.navigate(['/dashboard']);
       },
       (error) => {
-        this.isLoading = false;
+        this.isLoading = false;  // Hide loading state
+        this.errorMessage = error.error.message || 'An error occurred during login.';
         console.error('Login failed:', error);
-        this.errorMessage = error.error.message || 'An error occurred. Please try again.';
       }
     );
-  }
-
-  ngOnInit() {
-    if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/dashboard']);  // Redirect to dashboard if logged in
-    }
   }
 }

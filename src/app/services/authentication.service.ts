@@ -1,38 +1,45 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';  // Corrected import
+import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private baseUrl = 'http://localhost:3000'; // Adjust the URL if needed
+  private baseUrl = 'http://localhost:3000';  // Backend URL
 
-  constructor(private http: HttpClient) {} // Injecting HttpClient directly
+  constructor(private http: HttpClient) {}
 
-  login(email: string, password: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/login`, { email, password });
-  }
-
+  // Register user (existing method)
   register(name: string, email: string, password: string): Observable<any> {
     return this.http.post(`${this.baseUrl}/users`, { name, email, password });
   }
 
+  // Login method to call the backend API
+  login(email: string, password: string): Observable<any> {
+    return this.http.post(`${this.baseUrl}/login`, { email, password });
+  }
+
+  // Store user session after successful login
   storeUserSession(response: any): void {
-    localStorage.setItem('user', JSON.stringify(response.user));
-    localStorage.setItem('auth_token', 'your-auth-token-here'); // You may use a JWT token here
+    localStorage.setItem('auth_token', response.token);  // Assuming the backend sends a token
+    localStorage.setItem('user', JSON.stringify(response.user));  // Optional, store user details
   }
 
+  // Check if the user is logged in by checking token
   isLoggedIn(): boolean {
-    return !!localStorage.getItem('auth_token'); // If token exists, user is logged in
+    return !!localStorage.getItem('auth_token');
   }
 
+  // Get stored user details
   getUser(): any {
-    return JSON.parse(localStorage.getItem('user') || '{}');
+    const user = localStorage.getItem('user');
+    return user ? JSON.parse(user) : null;
   }
 
+  // Logout method to clear session
   logout(): void {
-    localStorage.removeItem('user');
     localStorage.removeItem('auth_token');
+    localStorage.removeItem('user');
   }
 }
