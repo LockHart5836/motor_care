@@ -16,7 +16,6 @@ export class LoginComponent implements AfterViewInit {
   @ViewChild('password') passwordInput!: ElementRef;
   errorMessage: string = '';
   isLoading: boolean = false;
-
   passwordFieldType: string = 'password';
 
   constructor(private router: Router, private authService: AuthenticationService) {}
@@ -28,6 +27,7 @@ export class LoginComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.usernameInput.nativeElement.focus();
   }
+
   onLogin(): void {
     this.errorMessage = '';
     this.isLoading = true;
@@ -40,7 +40,12 @@ export class LoginComponent implements AfterViewInit {
       (response) => {
         this.isLoading = false;
         console.log('Login successful:', response);
-        this.router.navigate(['/dashboard']); // Navigate to the dashboard
+        
+        // Store user session after successful login
+        this.authService.storeUserSession(response);
+
+        // Navigate to the dashboard or any other page after login
+        this.router.navigate(['/dashboard']); 
       },
       (error) => {
         this.isLoading = false;
@@ -48,5 +53,12 @@ export class LoginComponent implements AfterViewInit {
         this.errorMessage = error.error.message || 'An error occurred. Please try again.';
       }
     );
+  }
+
+  // Optional: Check if user is already logged in
+  ngOnInit() {
+    if (this.authService.isLoggedIn()) {
+      this.router.navigate(['/dashboard']);  // Redirect to dashboard if logged in
+    }
   }
 }
