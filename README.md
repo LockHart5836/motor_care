@@ -9,7 +9,7 @@ Terminal - node index.js ---> "Server running on http://localhost:3000"
 
 # USE XAMPP mysql
 
-XAMPP is used here for storing our database just run the mysql
+XAMPP is used here for storing our database just **run** the 'mysql'
 
 ## Development server
 
