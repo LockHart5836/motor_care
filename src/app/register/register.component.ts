@@ -19,6 +19,10 @@ export class RegisterComponent {
 
   constructor(private router: Router, private authService: AuthenticationService) {}
 
+  navigateToLogin(): void {
+    this.router.navigate(['/login']);
+  }
+
   onSubmit(): void {
     // Validate that passwords match
     if (this.password !== this.confirmPassword) {

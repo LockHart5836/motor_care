@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Navbar</title>
+    <title>Motor Care</title>
 </head>
 <body>
     <nav>
@@ -11,7 +11,7 @@
             <div class="user-info">
                 <div class="user-details">
                 </div>
-                <button class="logout-btn" onclick="navigateToLogin()">&#x2192;</button>
+                <button class="logout-btn" (click)="logout()">Logout &#x2192;</button>
             </div>
         </div>
     </nav>
@@ -100,7 +100,7 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container-quick">
         <h2>Quick Actions</h2>
         <div class="actions-grid">
           <!-- Book Service -->
@@ -153,70 +153,28 @@
     </script>
 </body>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes</title>
-    <style>
-    </style>
-</head>
-<body>
+<div class="main-wrapper">
     <div class="container">
-        <h2>Notes</h2>
-        <div class="note-input">
-            <textarea id="newNote" placeholder="Add a new note..."></textarea>
-            <button id="addNoteBtn">Add Note</button>
-        </div>
-        <div class="notes-list" id="notesList"></div>
+      <h2>Notes</h2>
+      <div class="note-input">
+        <textarea 
+          id="newNote" 
+          placeholder="Add a new note..." 
+          [(ngModel)]="newNoteContent" 
+          (input)="checkInput()">
+        </textarea>
+        <button id="addNoteBtn" [disabled]="isButtonDisabled" (click)="addNote()">Add Note</button>
+      </div>
     </div>
-
-    <script>
-        const notes = [];
-
-        const newNoteInput = document.getElementById('newNote');
-        const addNoteBtn = document.getElementById('addNoteBtn');
-        const notesList = document.getElementById('notesList');
-
-        newNoteInput.addEventListener('input', () => {
-            addNoteBtn.disabled = !newNoteInput.value.trim();
-        });
-
-        addNoteBtn.addEventListener('click', () => {
-            const content = newNoteInput.value.trim();
-            if (content) {
-                const note = {
-                    id: Date.now(),
-                    content,
-                    date: new Date().toLocaleDateString(),
-                };
-                notes.unshift(note);
-                renderNotes();
-                newNoteInput.value = '';
-                addNoteBtn.disabled = true;
-                alert('Note added successfully!');
-            }
-        });
-
-        function renderNotes() {
-            notesList.innerHTML = notes.map(note => `
-                <div class="note-card">
-                    <button class="delete-btn" onclick="deleteNote(${note.id})">&times;</button>
-                    <p class="note-date">${note.date}</p>
-                    <p>${note.content}</p>
-                </div>
-            `).join('');
-        }
-
-        function deleteNote(id) {
-            const noteIndex = notes.findIndex(note => note.id === id);
-            if (noteIndex > -1) {
-                notes.splice(noteIndex, 1);
-                renderNotes();
-                alert('Note deleted successfully!');
-            }
-        }
-    </script>
-</body>
+    <div class="notes-section">
+      <div *ngFor="let note of notes" class="note-card">
+        <button class="delete-btn" (click)="deleteNote(note.id)">&times;</button>
+        <p class="note-date">{{ note.date }}</p>
+        <pre>{{ note.content }}</pre>
+      </div>
+    </div>
+  </div>
+  
 
 <head>
   <meta charset="UTF-8">

@@ -82,7 +82,14 @@
           Register
         </button>
       </form>
-      <a href="/login" class="link">Already have an account? Login here</a>
+      <div class="text-center mt-4"> 
+        <p class="text-sm text-gray-500">Already have an account?</p>
+        <button 
+          class="text-primary hover:text-primary/80 border-none bg-none cursor-pointer"
+          (click)="navigateToLogin()">
+          Login here
+        </button>
+      </div>  
     </div>
   </div>
   

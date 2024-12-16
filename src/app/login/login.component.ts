@@ -23,6 +23,10 @@ export class LoginComponent implements AfterViewInit {
 
   constructor(private router: Router, private authService: AuthenticationService) {}
 
+  navigateToRegister(): void {
+    this.router.navigate(['/register']);
+  }
+  
   togglePasswordVisibility(): void {
     this.passwordFieldType = this.passwordFieldType === 'password' ? 'text' : 'password';
   }
